@@ -1,0 +1,129 @@
+doctype html
+
+html(lang="en")
+
+    //- =============================================================================
+    //- > HEAD
+    //- =============================================================================
+    head
+        meta(charset="UTF-8")
+        meta(name="description" content="")
+        meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(href="build/css/bundle.css", rel="stylesheet")
+        title Ecophos Technology Services
+        block head
+
+
+
+    //- =============================================================================
+    //- > BODY
+    //- =============================================================================
+    body
+
+        //- ==================================================
+        //- > SITE
+        //- ==================================================
+        block site
+            .site
+
+                //- ==================================================
+                //- > HEADER
+                //- ==================================================
+                block header-wrapper
+                    header(role="navigation").site-header
+                        block header
+                            nav.site-header__nav.container: .row
+
+                                .gr-8
+                                    a.site-header__brand(href="./" rel="home") Ecophos Industrial Services
+                                    p.site-header__baseline.
+                                        Member of <a href="./../">Ecophos</a>
+
+                                .gr-4
+                                    nav.social-menu: ul.unstyled-list
+
+                                        li.item: a(href="https://www.twitter.com/ecophos" target="_blank")
+                                            i.fa.fa-twitter
+                                            span Twitter
+                                        li.item: a(href="http://www.linkedin.com/company/ecophos" target="_blank")
+                                            i.fa.fa-linkedin
+                                            span LinkedIn
+
+
+                //- ==================================================
+                //- > CONTENT
+                //- ==================================================
+                block main-wrapper
+                    main.site-main(role="main")
+                        block main
+
+                            //- ========== INTRO ========== -//
+                            block intro
+                                //- .site-intro
+                                //-     .container
+
+
+                            //- ========== ASIDE ========== -//
+                            block aside
+                                //- aside.site-aside
+
+
+                            //- ========== CONTENT ========== -//
+                            block sections
+
+
+
+                //- ==================================================
+                //- > FOOTER
+                //- ==================================================
+                block footer-wrapper
+                    footer.site-footer.color-white(role="contentinfo")
+                        block footer
+                            .container
+                                h2.title-contact-1 Contact
+
+                                .row
+                                    .gr-6.gr-12-xs
+                                        .row
+                                            h3.title-contact-2.
+                                                Technophos
+                                            h4.title-contact-3.
+                                                Veneta Dimitrova , COO Technophos
+                                            p.gr-6.gr-12-xs.
+                                                Industrial Zone South<br>
+                                                Devnya 9160<br>
+                                                Bulgaria
+                                            p.gr-6.gr-12-xs.
+                                                Tel. +359 52 91 83 91
+
+                                    .gr-6.gr-12-xs
+                                        .row
+                                            h3.title-contact-2.
+                                                Ecophos Technology
+                                            h3.title-contact-3.
+                                                Laurent Palierne, Technology Sales Director
+                                            p.gr-6.gr-12-xs.
+                                                Avenue Jean Monnet 1<br>
+                                                1342 Louvain-La-Neuve<br>
+                                                Belgium
+                                            p.gr-6.gr-12-xs.
+                                                Tel. +32 (0)10 47 73 70
+
+                            .site-footer__bottom.color-white: .container
+                                p.copy © Ecophos Group - All rights reserved
+
+
+        //- ==================================================
+        //- > MOBILE NAVIGATION
+        //- ==================================================
+        //- button.mobile-nav-trigger
+        //-     span
+        //-     span
+        //-     span
+
+        //- aside.mobile-nav
+
+
+        script(src="build/js/bundle.js" type="text/javascript")

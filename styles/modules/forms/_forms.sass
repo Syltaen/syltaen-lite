@@ -1,0 +1,134 @@
+// =============================================================================
+// > LAYOUTS: MODULES - FORMS
+// =============================================================================
+
+form
+    hr
+        margin: 50px 0
+        height: 0
+        margin-bottom: 1px solid color(secondary)
+
+    .hidden-wrap
+        display: none
+
+// ==================================================
+// > FIELDSET
+// ==================================================
+fieldset
+    margin-bottom: spacing(sm)
+
+// ==================================================
+// > LABEL
+// ==================================================
+label
+    +font(15px regular)
+    +truncate(100%)
+    font-weight: normal
+    cursor: pointer
+    height: 24px
+    margin-bottom: 5px
+    text-transform: none
+
+// ==================================================
+// > PLACEHOLDERS
+// ==================================================
+input
+    +placeholder
+        +font(light rgba(color(dark-grey), .5))
+
+// ==================================================
+// > INPUT
+// ==================================================
+%input
+    +size(100%, 48px)
+    +font(16px 48px)
+    background: none
+    padding: 0 20px
+    resize: none
+    border: 1px solid darken(color(light-grey), 5%)
+    &.no-border
+        border: 0
+
+input
+    @extend %input
+
+// ==================================================
+// > TEXTAREA
+// ==================================================
+textarea
+    @extend %input
+    min-height: 250px
+    padding: 10px 20px
+    line-height: 1.4
+    display: block
+    margin: 0
+
+
+// ==================================================
+// > RADIO / CHECKBOX
+// ==================================================
+input[type="radio"],
+input[type="checkbox"]
+    +size(14px)
+    appearance: none
+    position: relative
+    margin: 8px 5px 0
+    padding: 0
+    border: 0
+
+    &::before
+        content: "\f096"
+        +font(16px 20px primary fa)
+        +absolute(top 0 left 0)
+        height: 14px
+
+    &:checked::before
+        content: "\f046"
+
+input[type="radio"]
+    border: 2px solid color(primary)
+    border-radius: 50%
+    &::before
+        content: ""
+        +size(6px)
+        +absolute(top 50% left 50%)
+        opacity: 0
+        background: color(primary)
+        border-radius: 50%
+        margin-top: -3px
+        margin-left: -3px
+    &:checked::before
+        content: ""
+        opacity: 1
+
+
+// ==================================================
+// > SUBMIT
+// ==================================================
+input[type="submit"],
+input[type="button"]
+    @extend .button
+    +font(white regular uppercase)
+    background: color(primary)
+    height: 50px
+    float: right
+    cursor: pointer
+    margin-top: 20px !important
+    clear: both
+
+    &::hover
+        background: white
+        color: color(primary)
+        border: 2px solid color(primary)
+
+
+// ==================================================
+// > SELECT
+// ==================================================
+// -> See _select2.sass
+
+
+// ==================================================
+// > UPLOAD
+// ==================================================
+// -> See _dropzone.sass

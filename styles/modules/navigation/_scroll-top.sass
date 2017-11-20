@@ -1,0 +1,29 @@
+// =============================================================================
+// > LAYOUTS: MODULES - NAVIGATION: SCROLL TOP
+// =============================================================================
+
+#scroll-top
+    +size(50px)
+    +font(24px 50px white)
+    +fixed(right 40px bottom 40px)
+    background: color(primary)
+    z-index: 9999
+    border-radius: 3px
+    cursor: pointer
+    transform: translateY(100px)
+    transition: all .35s ease
+    text-align: center
+    box-shadow: 0 0 3px 0 rgba(black, 0)
+
+    &:hover
+        +font(primary)
+        background: white
+        border-color: color(primary)
+        box-shadow: 0 0 3px 0 rgba(black, .2)
+
+    &::before
+        content: $fa-var-angle-up
+        +font(fa)
+
+    &.shown
+        transform: translateY(0)

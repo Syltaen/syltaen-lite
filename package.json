@@ -1,0 +1,45 @@
+{
+  "name": "syltaen-lite",
+  "version": "3.0.0",
+  "description": "Light boilerplate for HTML projects. Uses Pug, SASS and CoffeeScript. Built with webpack.",
+  "main": "scripts/build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --env.prod",
+    "start": "webpack --watch --env.dev"
+  },
+  "author": "Syltaen",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "browser-sync-webpack-plugin": "^1.2.0",
+    "coffee-loader": "^0.7.3",
+    "coffee-script": "^1.12.7",
+    "css-loader": "^0.28.4",
+    "extract-loader": "^0.1.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "html-loader": "^0.4.5",
+    "node-sass": "^4.5.3",
+    "optimize-css-assets-webpack-plugin": "^2.0.0",
+    "postcss-loader": "^2.0.6",
+    "pug-html-loader": "^1.1.5",
+    "resolve-url-loader": "^2.1.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.3.0",
+    "webpack-livereload-plugin": "^0.11.0"
+  },
+  "dependencies": {
+    "dropzone": "^5.1.1",
+    "jquery": "^3.2.1",
+    "jquery-hammerjs": "^2.0.0",
+    "jquery.transit": "^0.9.12",
+    "moment": "^2.18.1",
+    "select2": "^4.0.3",
+    "slick-carousel": "^1.6.0",
+    "viewport-units-buggyfill": "^0.6.2",
+    "skrollr": "^0.6.26"
+  }
+}

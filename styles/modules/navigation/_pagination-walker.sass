@@ -1,0 +1,58 @@
+// =============================================================================
+// > LAYOUTS: MODULES - NAVIGATION: PAGINATION
+// =============================================================================
+
+.pagination-walker
+    text-align: center
+
+    p
+        text-align: center
+        +font(14px)
+        margin-bottom: 40px
+
+    &__direction
+        +size(40px, 20px)
+        +font(20px 20px primary)
+        display: inline-block
+        position: relative
+        text-indent: -9999px
+        margin: 0 5px
+        transition: all .25s ease
+        &::before
+            @extend %cover
+            +font(fa)
+            text-indent: 0
+            text-align: center
+            line-height: 19px
+        &--first::before
+            content: "\f100"
+        &--last::before
+            content: "\f101"
+        &[disabled]
+            opacity: .15
+            background: none
+
+    &__pagelist
+        display: inline-block
+        li
+            display: inline-block
+            a,
+            .current
+                +size(45px)
+                +font(20px 45px white)
+                background: color(primary)
+                border: 3px solid white
+                text-align: center
+                display: block
+                opacity: .7
+                margin: 0 -3px
+                transition: all .25s ease
+                position: relative
+                top: 0
+            .current
+                opacity: 1
+                top: -10px
+                z-index: 5
+
+            a:hover
+                top: -5px

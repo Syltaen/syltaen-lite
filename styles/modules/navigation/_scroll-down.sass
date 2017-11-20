@@ -1,0 +1,28 @@
+// =============================================================================
+// > LAYOUTS: MODULES - NAVIGATION: SCROLL DOWN
+// =============================================================================
+
+.scroll-down
+    +absolute(left 50% bottom 40px)
+    +size(24px, 40px)
+    margin-left: -12px
+    text-indent: -9999em
+    border: 2px solid white
+    border-radius: 12px
+
+    &::before
+        content: ""
+        +size(4px)
+        +absolute(left 50% top 10px)
+        background: white
+        border-radius: 50%
+        margin-left: -2px
+        animation: scrollDown 1.5s ease infinite
+
+    &::after
+        content: ""
+        +size(8px)
+        +absolute(left 50% bottom -12px)
+        transform: translate(-50%) rotate(45deg)
+        border-bottom: 2px solid white
+        border-right: 2px solid white

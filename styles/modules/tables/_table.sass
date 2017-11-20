@@ -1,0 +1,95 @@
+// =============================================================================
+// > LAYOUTS: MODULES - TABLES
+// =============================================================================
+
+table
+    width: 100%
+    max-width: 100%
+    text-align: center
+    margin: 1em 0
+    border: 1px solid color(primary)
+
+    // ========== TABLE MODIFIERS ========== //
+    &.aligncenter
+        margin: 0 auto
+
+    &.alignleft
+        float: left
+        margin-right: 10px
+
+    &.full-width
+        width: 100% !important
+        height: auto
+
+    &.full-height
+        height: 100%
+        width: auto
+
+
+    // ==================================================
+    // > ELEMENTS
+    // ==================================================
+    td, th
+        padding: 10px
+
+    // ========== TH ========== //
+    th
+        background: color(primary)
+        color: white
+        &.left-strong-border
+            border-left: 1px solid darken(color(primary), 15%)
+
+        &.bg-white
+            +font(text)
+        p
+            margin: .5em 0
+
+    tfoot
+        background: color(dark-grey)
+        th
+            background: none
+            +font(text)
+
+    // ========== TD ========== //
+    td
+        border: 1px solid darken(color(dark-grey), 5%)
+        &.left-strong-border
+            border-left-color: darken(color(dark-grey), 50%)
+        p
+            margin: 0
+
+
+    // ========== TABLE FILTERS ========== //
+    .table-filters
+        td
+            background: #eee
+            padding: 10px
+            height: 30px
+            input, select, .select2-selection--single
+                height: 30px
+                background: white
+                margin: 0
+            input
+                position: relative
+                top: 1px
+                padding: 0 6px
+                +font(12px)
+                float: none
+                &.submit
+                    top: 2px
+                    background: color(primary)
+                    line-height: 30px
+                    display: block
+                    margin-top: 0px !important
+                    color: white
+            .select2-container
+                .select2-selection__rendered,
+                .select2-selection__arrow
+                    line-height: 30px
+                    height: 30px
+                .select2-selection__rendered
+                    padding-left: 5px
+                    padding-right: 5px
+                    +font(12px)
+                .select2-selection__arrow
+                    width: 20px
