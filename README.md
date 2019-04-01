@@ -15,3 +15,6 @@ git clone https://github.com/Syltaen/syltaen-lite.git
 ```bash
 npm install
 ```
+
+
+### Update the base URLs in .htaccess and webpack.config.js

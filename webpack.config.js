@@ -56,12 +56,18 @@ module.exports = env => {
                 {
                     test: /\.pug$/,
                     use: [
-                        "file-loader?name=../[name].html",
+                        "file-loader?name=../build/html/[name].html",
                         "extract-loader",
                         { loader : "html-loader", options: { attrs: false} },
-                        "pug-html-loader"
+                        { loader: "pug-html-loader", options: {data: {
+                            version: Date.now(),
+                            baseurl: env.prod
+                                ? "https://www.urldeprod.com/"
+                                : "http://localhost/_/syltaen/syltaen-lite/"
+                        } } }
                     ]
                 },
+
 
                 // ========== COFFEESCRIPT ========== //
                 {
@@ -96,6 +102,8 @@ module.exports = env => {
             }),
 
             new BrowserSyncPlugin({
+                proxy: "http://localhost/" + project.name, // Activate for livereload
+
                 files: [
                     {
                         match: [

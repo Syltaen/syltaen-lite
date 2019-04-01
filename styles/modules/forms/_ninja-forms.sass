@@ -1,0 +1,144 @@
+// =============================================================================
+// > LAYOUTS: MODULES - FORMS: NINJA FORMS
+// =============================================================================
+
+// ==================================================
+// > ERRORS
+// ==================================================
+.nf-error-msg,
+.error-msg,
+    +font(12px error center)
+    margin-top: 10px
+
+.ninja-forms-req-symbol
+    +font(error)
+
+.nf-error .ninja-forms-field
+  border-color: color(error)
+
+
+.nf-form-hp
+  position: absolute
+  visibility: hidden
+
+.nf-form-fields-required
+    display: none
+
+
+// ==================================================
+// > LABELS
+// ==================================================
+.field-wrap
+    display: flex
+
+.nf-field
+    clear: both
+
+.label-above .nf-field-label
+    margin-bottom: 0
+
+.label-below
+    .nf-field-label
+        margin-top: 0
+        order: 15
+    .nf-field-element
+        order: 5
+
+.label-above,
+.label-below
+    .nf-field-element
+        margin: 0
+        width: 100%
+    .field-wrap
+        flex-flow: column wrap
+
+.label-hidden
+    .field-wrap
+        flex-wrap: wrap
+    .nf-field-label
+        display: none
+    .nf-field-element
+        width: 100%
+        margin-top: 15px
+.html-wrap .nf-field-label
+    display: none
+
+.label-left
+    .field-wrap
+        flex-flow: row wrap
+    .nf-field-label
+        +flex(row, null, center)
+        padding-right: 10px
+        text-align: right
+        width: 35%
+        order: 5
+        label
+            width: 100%
+    .nf-field-element
+        display: inline-block
+        width: 65%
+        order: 10
+
+
+.label-right
+    .field-wrap
+        flex-direction: row
+    .nf-field-label
+        +flex(row, null, center)
+        padding-left: 10px
+        width: 35%
+        order: 10
+    .nf-field-element
+        display: inline-block
+        width: 65%
+        order: 5
+
+    &.checkbox-container
+        .nf-field-label,
+        .nf-field-element
+            width: auto
+
+
+
+// ==================================================
+// > LAYOUT
+// ==================================================
+.nf-field-container
+    margin-bottom: 20px
+
+
+// ==================================================
+// > FIELDS
+// ==================================================
+
+// > RADIO / CHECKBOX
+.nf-form-cont .list-radio-wrap ul,
+.nf-form-cont .list-checkbox-wrap ul,
+    @extend %unstyled-list
+    label
+        +font(regular)
+
+// > SUBMIT
+.submit-container
+    input
+        // width: auto
+    .nf-field-label
+        display: none
+
+
+// ==================================================
+// > DESCRIPTION
+// ==================================================
+.nf-field-description p
+    +font(12px)
+    margin: .5em 0 0
+
+
+// ==================================================
+// > LOADER
+// ==================================================
+.nf-form-loaded
+    display: none
+
+.nf-form-loader .nf-form-loaded
+    display: block

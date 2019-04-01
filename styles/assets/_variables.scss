@@ -18,8 +18,9 @@ $colors: (
     success:    ​#66cc66,
     error:      #e05252,
 
-    // Grays
+    // Greys
     light-grey: #f8f7f7,
+    medium-grey:#b3b3b3,
     dark-grey:  #282828,
     white:    #fff,
     black:    #111
@@ -35,7 +36,6 @@ $fonts-stacks: (
     regular: ("Raleway-Regular", "Raleway-Light", "Helvetica", "Arial", sans-serif),
     light:   ("Raleway-Light", "Raleway-Regular", "Helvetica", "Arial", sans-serif),
     bold:    ("Raleway-Bold", "Raleway-Regular", "Helvetica", "Arial", sans-serif),
-    fa:      "FontAwesome"
 );
 
 
@@ -58,6 +58,7 @@ $responsive: (
     )
 );
 
+
 // ==================================================
 // > SPACING
 // ==================================================
@@ -66,7 +67,17 @@ $spacing: (
     no: 0px,
     xs: 12px,
     sm: 24px,
+    ms: 30px,
     md: 60px,
     lg: 120px,
     xl: 240px
 );
+
+
+// ==================================================
+// > EASINGS
+// ==================================================
+// Usage : easing(bounce)
+$easing: (
+    bounce: cubic-bezier(0.680, -0.550, 0.265, 1.550)
+)

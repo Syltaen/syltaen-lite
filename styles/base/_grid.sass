@@ -7,13 +7,14 @@
 // ==================================================
 .container
     position: relative
+    z-index: 1
     width: calc(100% - 40px)
     max-width: container(md)
     margin: auto
 
     // Create a container modifier for each breakpoint
     @each $slug, $bp in $responsive
-        &--#{slug}
+        &--#{$slug}
             max-width: container($slug)
 
         // Set the container max size for each breakpoint
@@ -48,4 +49,76 @@ $gridle-classes-prefix:     ""     // the prefix used for all classes
 @each $slug, $bp in $responsive
     +gridle_register_state($slug, (max-width : breakpoint($slug)))
 +gridle_generate_classes()
+
+
+
+// ==================================================
+// > FLEX
+// > Ex: flex flex--row flex--nowrap flex--jc-top flex--align-left
+// ==================================================
+.flex
+    &-row
+        +flex(row nowrap)
+        &-wrap
+            +flex(row wrap)
+
+    &-column
+        +flex(column nowrap)
+        &-wrap
+            +flex(column wrap)
+
+
+    // Justify content
+    @each $jc in start end center space-between space-around
+        &-justify-#{$jc}
+            @if $jc == start or $jc == end
+                $jc: flex-#{$jc}
+            justify-content: $jc
+
+
+    // Align items
+    @each $ai in start end center baseline stretch
+        &-align-#{$ai}
+            @if $ai == start or $ai == end
+                $ai: flex-#{$ai}
+            align-items: $ai
+
+
+    // row items
+    &-row
+        &__item
+            flex: 1
+            width: 0
+
+        // ========== SPACING ========== //
+        @each $slug, $value  in $spacing
+            &--spacing-#{$slug}
+                margin-left: -1 * $value
+                margin-right: -1 * $value
+            &--spacing-#{$slug} &__item
+                padding-left: $value
+                padding-right: $value
+
+
+        // ========== RESPONSIVE ========== //
+        @each $slug, $bp in $responsive
+            +screen($slug)
+                &--responsive-#{$slug}
+                    flex-flow: column nowrap
+                &__item
+                    width: 100%
+
+// ==================================================
+// > GUTTERS
+// ==================================================
+@each $slug, $value  in $spacing
+    .row--#{$slug}-gutters
+        margin-left: -1 * $value
+        margin-right: -1 * $value
+
+        & > .gr-0, & > .gr-1, & > .gr-2, & > .gr-3, & > .gr-4, & > .gr-5, & > .gr-6, & > .gr-7, & > .gr-8, & > .gr-9, & > .gr-10, & > .gr-11, & > .gr-12
+            padding-left: $value
+            padding-right: $value
+
+
 

@@ -1,0 +1,26 @@
+// =============================================================================
+// > LAYOUTS: TEMPLATES - SEARCH
+// =============================================================================
+
+.search-page
+
+    &__title
+        +font(text)
+        margin-bottom: 60px
+        &__words
+            +font(primary)
+        small
+            +font(light)
+
+    &__type
+        margin: 0
+        +font(20px left secondary uppercase)
+
+    // ==================================================
+    // > RESULTS
+    // ==================================================
+    &__results
+        padding: 60px 0
+
+    &--no-results &__results
+        display: none

@@ -1,0 +1,91 @@
+// =============================================================================
+// > MODULE - INTERACTIVE : BUTTON
+// =============================================================================
+$button_base_color: color(primary)
+
+%button
+    +font(16px 1.2 center white bold uppercase)
+    position: relative
+    display: inline-flex
+    align-items: center
+    z-index: 5
+    border: 2px solid $button_base_color
+    cursor: pointer
+    padding: 10px 20px
+    transition: all .35s ease
+
+    &::before
+        content: ""
+        +size(100%)
+        background: $button_base_color
+        +absolute(top 0 left 0)
+        z-index: -1
+        transition: width .35s ease
+
+    .button__parent:hover &,
+    &:hover
+        color: $button_base_color
+        &::before
+            width: 0
+            left: 100%
+            transition: all .35s ease
+
+
+.button
+    @extend %button
+
+    // ========== SIZES ========== //
+    &--fullwidth
+        display: block
+        width: 100%
+
+    &--small
+        +font(13px)
+        padding: 5px
+
+    &--big
+        +font(20px bold)
+        padding: 20px 60px
+
+    // ========== REVERSE ========== //
+    &--reversed
+        color: $button_base_color
+        &::before
+            width: 0
+            left: 100%
+            transition: width .35s ease, left 0s ease .35s
+        &:hover
+            +font(white)
+            &::before
+                width: 100%
+                left: 0
+
+    // ========== COLORS ========== //
+    @each $color, $value in $colors
+        &--#{$color}
+            border-color: $value
+            &::before
+                background: $value
+            &:hover
+                color: $value
+        &--#{$color}.button--reversed
+            color: $value
+            &:hover
+                color: white
+
+    // ========== ICONS ========== //
+    .fa
+        margin-right: .5em
+
+    // ========== LOADING ========== //
+    &.is-loading
+        opacity: 0.5
+        pointer-events: none
+        &::after
+            +fa(circle-notch)
+            +absolute(top 50% left 100%)
+            +font(30px 40px secondary center)
+            +size(40px)
+            margin-top: -20px
+            margin-left: 10px
+            animation: spin 2s linear infinite

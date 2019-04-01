@@ -1,5 +1,5 @@
 // =============================================================================
-// > COMPONENTS - PICKADAY
+// > MOUDLE - FORMS : PICKADAY
 // =============================================================================
 
 @import "assets/vendors/pikaday"
@@ -9,8 +9,8 @@
     &-date-choice
         position: relative
         &::before
-            content: "\f073"
-            +font(primary fa)
+            +fa(calendar-alt)
+            +font(primary)
             padding-right: 10px
         .value.placeholder
             opacity: .5

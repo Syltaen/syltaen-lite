@@ -8,7 +8,7 @@
 @function list_get($array, $index)
     @if map-has-key($array, $index)
         @return map-get($array, $index)
-    @warn "Unkown '#{$slug}' in '#{$array}'"
+    @warn "Unkown '#{$index}' in array"
     @return null
 
 
@@ -48,5 +48,13 @@
 @function spacing($slug)
     @if map-has-key($spacing, $slug)
         @return list_get($spacing, $slug)
+    @else
+        @return $slug
+
+
+// ========== EASING ========== //
+@function easing($slug)
+    @if map-has-key($easing, $slug)
+        @return list_get($easing, $slug)
     @else
         @return $slug

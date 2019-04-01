@@ -32,14 +32,15 @@
     "webpack-livereload-plugin": "^0.11.0"
   },
   "dependencies": {
+    "barba.js": "^1.0.0",
     "dropzone": "^5.1.1",
     "jquery": "^3.2.1",
     "jquery-hammerjs": "^2.0.0",
     "jquery.transit": "^0.9.12",
     "moment": "^2.18.1",
     "select2": "^4.0.3",
+    "skrollr": "^0.6.26",
     "slick-carousel": "^1.6.0",
-    "viewport-units-buggyfill": "^0.6.2",
-    "skrollr": "^0.6.26"
+    "viewport-units-buggyfill": "^0.6.2"
   }
 }

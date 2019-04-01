@@ -4,55 +4,83 @@
 
 .pagination-walker
     text-align: center
+    padding: 40px 0
 
-    p
-        text-align: center
-        +font(14px)
-        margin-bottom: 40px
 
+    // ========== DIRECTIONS ========== //
     &__direction
-        +size(40px, 20px)
-        +font(20px 20px primary)
-        display: inline-block
+        +size(40px)
+        +font(18px 35px primary center)
         position: relative
+        border-radius: 50%
+        border: 2px solid color(primary)
+        display: inline-block
         text-indent: -9999px
-        margin: 0 5px
         transition: all .25s ease
-        &::before
-            @extend %cover
-            +font(fa)
-            text-indent: 0
-            text-align: center
-            line-height: 19px
-        &--first::before
-            content: "\f100"
-        &--last::before
-            content: "\f101"
-        &[disabled]
-            opacity: .15
-            background: none
+        margin: 0 10px
 
+        &::before
+            text-indent: 0
+            @extend %cover
+        &--first:before
+            +fa(angle-double-left)
+        &--previous:before
+            +fa(angle-left)
+        &--next:before
+            +fa(angle-right)
+        &--last:before
+            +fa(angle-double-right)
+
+        &--first,
+        &--last
+            +screen(xs)
+                display: none
+
+        &:hover
+            color: white
+            border-color: color(primary)
+            background: color(primary)
+
+        &[disabled]
+            border-color: darken(color(primary), 20%)
+            color: darken(color(primary), 20%)
+            background: none
+            opacity: .2
+
+    // ========== PAGES ========== //
     &__pagelist
         display: inline-block
-        li
-            display: inline-block
-            a,
-            .current
-                +size(45px)
-                +font(20px 45px white)
-                background: color(primary)
-                border: 3px solid white
-                text-align: center
-                display: block
-                opacity: .7
-                margin: 0 -3px
-                transition: all .25s ease
-                position: relative
-                top: 0
-            .current
-                opacity: 1
-                top: -10px
-                z-index: 5
 
-            a:hover
-                top: -5px
+        &__item
+            display: inline-block
+            position: relative
+
+            &__current,
+            &__link
+                +font(20px dark-grey bold)
+                padding: 0 30px
+                +screen(xs)
+                    padding: 0 10px
+                &:hover
+                    +font(primary)
+
+            &__current
+                +font(primary)
+
+            &:after
+                content: ""
+                +size(20px, 2px)
+                background: darken(color(light-grey), 20%)
+                +absolute(right -10px top 50%)
+                margin-top: -1px
+                +screen(xs)
+                    +size(3px, 2px)
+                    right: -3px
+
+            &:last-child:after
+                display: none
+
+    // ========== LOCATION ========== //
+    &__location
+        +font(14px bold medium-grey)
+        margin: 0

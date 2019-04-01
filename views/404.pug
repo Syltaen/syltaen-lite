@@ -1,9 +1,22 @@
 extends templates/_base
 
 //- ==================================================
+//- > INTRO
+//- ==================================================
+block intro
+    .site-intro
+        .container
+            h1 Erreur 404
+
+//- ==================================================
 //- > CONTENT
 //- ==================================================
-block main
-    .container.content
-        p
-            | Cette page n'existe pas <br>
+block sections
+    section.site-section.md-padding-vertical.bg-white: .container
+
+        p.text-align-center
+            |Cette page n'existe pas
+            br
+            a(href="")
+                | &#8592;&nbsp;
+                |Retour à l'accueil

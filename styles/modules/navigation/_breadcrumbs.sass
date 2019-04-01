@@ -1,0 +1,33 @@
+// =============================================================================
+// > LAYOUTS: MODULES - NAVIGATION: BREADCUMBS
+// =============================================================================
+
+.breadcrumbs
+    +font(12px 20px secondary left)
+    padding: 10px 5px
+
+    &-container
+        height: 40px
+        margin-bottom: -40px
+        overflow: hidden
+        +screen(xs)
+            height: auto
+
+    // ==================================================
+    // > ITEMS
+    // ==================================================
+    .trail-items li
+        float: left
+        // padding: 0 5px
+        &::after
+            content: "/"
+            padding: 0 5px
+        &:last-child::after
+            content: none
+
+    a
+        border-bottom: 1px solid color(white)
+        +font(white)
+        &:hover
+            +font(primary)
+            border-bottom-color: color(primary)
