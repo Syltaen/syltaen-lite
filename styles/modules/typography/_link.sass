@@ -11,9 +11,11 @@ a,
 
     &:not([class]),
     &.link
+        white-space: nowrap
+        display: inline-block
         &::after
             content: ""
-            +absolute(bottom 0 left 0)
+            +absolute(bottom .1em left 0)
             +size(100%, 1px)
             background: color(primary)
             transition: width .35s ease
@@ -23,8 +25,11 @@ a,
             left: 100%
             transition: all .35s ease
 
-    @each $color, $value in $colors
-        .color-#{$color} &,
-        &.color-#{$color},
-            &::after
-                background: $value
+        @each $color, $value in $colors
+            .color-#{"" + $color} &,
+            &.color-#{"" + $color},
+                &::after
+                    background: $value
+
+            &.link--#{"" + $color}::after
+                background: $value !important

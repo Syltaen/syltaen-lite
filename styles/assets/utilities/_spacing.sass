@@ -1,0 +1,52 @@
+// =============================================================================
+// > SPACING
+// =============================================================================
+
+=screen-spacing
+    +screen-suffixes() using ($suffix, $bp)
+        $ratio: spacingratio($bp)
+        @each $sp, $value in $spacing
+            $value: $value * $ratio
+            @content($sp, $value, $ratio, $suffix, $bp)
+
+=spacing-list($spacing_class, $spacing_property, $sp, $value, $suffix: "")
+    .#{$sp}-#{$spacing_class}#{$suffix}
+        #{$spacing_property}: $value !important
+
+    .#{$sp}-#{$spacing_class}-top#{$suffix}
+        #{$spacing_property}-top: $value !important
+
+    .#{$sp}-#{$spacing_class}-bottom#{$suffix}
+        #{$spacing_property}-bottom: $value !important
+
+    .#{$sp}-#{$spacing_class}-left#{$suffix}
+        #{$spacing_property}-left: $value !important
+
+    .#{$sp}-#{$spacing_class}-right#{$suffix}
+        #{$spacing_property}-right: $value !important
+
+    .#{$sp}-#{$spacing_class}-vertical#{$suffix}
+        #{$spacing_property}-top: $value !important
+        #{$spacing_property}-bottom: $value !important
+
+    .#{$sp}-#{$spacing_class}-horizontal#{$suffix}
+        #{$spacing_property}-left: $value !important
+        #{$spacing_property}-right: $value !important
+
+
+// Each spacing, with a ratio for each media query.
+// Does not output items that would have the same result of an earlier query.
+// Ex: .sm-margin-top
++screen-spacing using ($sp, $value, $ratio, $suffix, $bp)
+    @if (breakpoint($bp) == null or $ratio != 1) and (breakpoint($bp) == null or $value != 0px)
+        +spacing-list("padding", "padding", $sp, $value)
+        +spacing-list("margin", "margin", $sp, $value)
+        +spacing-list("offset", "margin", $sp, $value * -1)
+
+// Force a different spacing for each breakpoints
+// Ex: .lg-padding-vertical-sm
++screen-spacing using ($sp, $value, $ratio, $suffix, $bp)
+    @if breakpoint($bp)
+        +spacing-list("padding", "padding", $sp, $value, $suffix)
+        +spacing-list("margin", "margin", $sp, $value, $suffix)
+        +spacing-list("offset", "margin", $sp, $value * -1, $suffix)

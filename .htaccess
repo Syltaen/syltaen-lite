@@ -5,12 +5,12 @@ RewriteBase /_/syltaen/syltaen-lite/
 
 # On folder (trailing slashes), display html file
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^/]+)/$ build/html/$1.html
-RewriteRule ^([^/]+)/([^/]+)/$ build/html/$1/$2.html
+RewriteRule ^([^/]+)/$ public/html/$1.html
+RewriteRule ^([^/]+)/([^/]+)/$ public/html/$1/$2.html
 
 # On index, display index html file
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^$ build/html/home.html
+RewriteRule ^$ public/html/home.html
 
 # Redirect non-trailing slashes
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -23,4 +23,4 @@ RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /.*\.html\ HTTP/
 RewriteRule ^(.*)\.html$ $1/ [R=301,L]
 
 # Custom 404 page
-ErrorDocument 404 /_/syltaen/syltaen-lite/build/html/404.html
+ErrorDocument 404 /_/syltaen/syltaen-lite/public/html/404.html

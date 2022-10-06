@@ -1,0 +1,49 @@
+// =============================================================================
+// > ADMIN : ACF-SECTIONS-CONTENT
+// =============================================================================
+
+.acf-sections-content > .acf-input > .acf-flexible-content
+
+
+    // ==================================================
+    // > LAYOUT
+    // ==================================================
+    & > .values > .layout
+        border: 1px solid #CCC
+
+        & > .acf-fc-layout-handle
+            background: #F5F5F5
+            &::before
+                +fa(th-large)
+                +font(16px primary)
+                margin-right: .5em
+
+        @each $layout, $icon in $section-content-icons
+            &[data-layout="#{$layout}"] > .acf-fc-layout-handle::before
+                content: fa-content($icon)
+
+
+    // ==================================================
+    // > ACTIONS
+    // ==================================================
+    & > .acf-actions
+        +flex(row nowrap, center, center)
+
+
+// ==================================================
+// > DROPDOWN
+// ==================================================
+.acf-tooltip a[data-layout]::before
+    +fa(th-large)
+    margin-right: .5em
+    width: 1.5em
+    display: inline-block
+    +font(center)
+    border-right: 1px solid rgba(white, .5)
+    margin-right: .5em
+    padding-right: .25em
+
+
+@each $layout, $icon in $section-content-icons
+    .acf-tooltip a[data-layout="#{$layout}"]::before
+        content: fa-content($icon)
