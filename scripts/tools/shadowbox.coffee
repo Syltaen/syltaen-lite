@@ -23,6 +23,7 @@ export default class Shadowbox
             if $(e.target).data("action") == "close"
                 if @$closeTarget && @$closeTarget.is($(e.target)) then @hide()
             @$closeTarget = false
+        $(window).on "keydown", (e) => if e.which == 27 then @hide()
 
 
     addNew: ->

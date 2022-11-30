@@ -2,12 +2,6 @@
 // > ASSETS
 // =============================================================================
 
-// Config
-baseurl = {
-    "development": "http://localhost/_/syltaen/syltaen-lite/",
-    "production": "https://www.example.com/",
-};
-
 // Utils
 const webpack              = require("webpack");
 const path                 = require("path")
@@ -20,7 +14,6 @@ const BrowserSyncPlugin    = require("browser-sync-webpack-plugin")
 const TerserPlugin         = require("terser-webpack-plugin");
 const CssMinimizerPlugin   = require("css-minimizer-webpack-plugin")
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
-const HtmlWebpackPlugin    = require('html-webpack-plugin');
 
 module.exports = (env, argv) => ({
     cache: true,
@@ -35,9 +28,8 @@ module.exports = (env, argv) => ({
 
     // OUT
     output: {
-        path: path.resolve(__dirname, "public"),
-        publicPath: "/",
-        filename: 'js/bundle.js?[hash]',
+        path: path.resolve(__dirname, "build/assets"),
+        filename: 'js/bundle.js',
     },
 
     // BUILD
@@ -56,12 +48,30 @@ module.exports = (env, argv) => ({
 
             // Pug
             {
-                test: /\.pug$/,
+                test: /index\.pug$/,
                 use: [
-                    "html-loader",
+                    "file-loader?name=../index.html",
                     {
                         loader: "pug-html-loader",
-                        options: {data: {baseurl: baseurl[argv.mode]}}
+                        options: {data: {
+                            asset: (file) => { return "assets/" + file + "?v=" + Date.now(); },
+                            link: (endpoint = "") => { return "./" + endpoint; },
+                            bg: (file) => { return "background-image: url(assets/img/" + file + "?v=" + Date.now() + ");"; },
+                        }}
+                    }
+                ]
+            },
+            {
+                test: /[^(index)]\.pug$/,
+                use: [
+                    "file-loader?name=../[name]/index.html",
+                    {
+                        loader: "pug-html-loader",
+                        options: {data: {
+                            asset: (file) => { return "../assets/" + file + "?v=" + Date.now(); },
+                            link: (endpoint = "") => { return "../" + endpoint; },
+                            bg: (file) => { return "background-image: url(../assets/img/" + file + "?v=" + Date.now() + ");"; },
+                        }}
                     }
                 ]
             },
@@ -96,20 +106,10 @@ module.exports = (env, argv) => ({
             jQuery: "jquery"
         }),
 
-
         // Extract CSS to their own files
         new MiniCssExtractPlugin({
             chunkFilename: "[name].css",
-            filename: "css/bundle.css?[hash]",
-        }),
-
-        // Extract each Pug file to their own HTML file
-        ...glob.sync("./views/**/[^_]*.pug").map((file) => {
-            return new HtmlWebpackPlugin({
-                template: file,
-                filename: 'html/' + file.replace('./views/', '').replace('.pug', '.html'),
-                publicPath: './public/',
-            })
+            filename: "css/bundle.css",
         }),
 
         // Allow SASS live reload
@@ -120,7 +120,7 @@ module.exports = (env, argv) => ({
 
         // Allow brower auto-reload on php/pug file changes
         new BrowserSyncPlugin({
-            proxy: baseurl[argv.mode],
+            proxy: "http://localhost/",
             files: [
                 "**/*.php",
                 "**/*.pug"

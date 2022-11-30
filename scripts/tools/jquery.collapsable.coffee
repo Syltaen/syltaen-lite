@@ -26,11 +26,14 @@ $.fn.collapsable = ($trigger = false, $content = false) ->
 class Collapsable
 
     constructor: (@$el, @$trigger, @$content, @isLinked = false) ->
-        unless @$el.hasClass "is-open" then @close 0
+        @opened = @$el.hasClass "is-open"
+        unless @opened then @close 0
 
         # Open/close events
         @$el.on "close", => @close()
+        @$el.on "open", => @open()
         @$trigger.click => @toggle()
+
 
     ###
     # Close the collapsable
