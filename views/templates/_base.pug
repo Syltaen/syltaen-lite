@@ -1,6 +1,6 @@
 doctype html
 
-html(lang="en")
+html(lang="fr")
 
     //- =============================================================================
     //- > HEAD
@@ -34,15 +34,13 @@ html(lang="en")
                     header(role="navigation").site-header
                         block header
                             nav.site-header__nav.container
-
-                                a.site-header__brand(href="" rel="home") ...
-
+                                a.site-header__brand(href=link("") rel="home") ...
 
                 //- ==================================================
                 //- > CONTENT
                 //- ==================================================
                 block main
-                    main.site-main#site-views(role="main"): .site-view(data-namespace="page")
+                    main.site-main(role="main")
                         block main
 
                             //- ========== INTRO ========== -//

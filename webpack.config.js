@@ -3,8 +3,9 @@
 // =============================================================================
 
 // Utils
+const project              = require("./package.json");
 const webpack              = require("webpack");
-const path                 = require("path")
+const path                 = require("path");
 const glob                 = require("glob");
 
 // Plugins
@@ -13,12 +14,12 @@ const LiveReloadPlugin     = require("webpack-livereload-plugin")
 const BrowserSyncPlugin    = require("browser-sync-webpack-plugin")
 const TerserPlugin         = require("terser-webpack-plugin");
 const CssMinimizerPlugin   = require("css-minimizer-webpack-plugin")
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin')
 
-module.exports = (env, argv) => ({
+
+module.exports = {
     cache: true,
-    stats: "errors-only",
-    devtool: false,
+    stats: false,
 
     // IN
     entry: [
@@ -38,6 +39,13 @@ module.exports = (env, argv) => ({
             new TerserPlugin(),
             new CssMinimizerPlugin()
         ],
+    },
+
+    // ==================================================
+    // > EXTERNAL(S)
+    // ==================================================
+    externals: {
+        jquery: "jQuery"
     },
 
     // ==================================================
@@ -89,7 +97,7 @@ module.exports = (env, argv) => ({
                     MiniCssExtractPlugin.loader,
                     { loader: "css-loader", options: { url: false }, },
                     { loader: "postcss-loader", options: { postcssOptions: { plugins: [require("autoprefixer")({"overrideBrowserslist": ["> 1%", "last 10 versions"]})] }}},
-                    "sass-loader"
+                    { loader: "sass-loader", options: { implementation: require("sass-embedded") }}
                 ],
             },
         ],
@@ -109,7 +117,7 @@ module.exports = (env, argv) => ({
         // Extract CSS to their own files
         new MiniCssExtractPlugin({
             chunkFilename: "[name].css",
-            filename: "css/bundle.css",
+            filename: "css/[name].css"
         }),
 
         // Allow SASS live reload
@@ -120,7 +128,7 @@ module.exports = (env, argv) => ({
 
         // Allow brower auto-reload on php/pug file changes
         new BrowserSyncPlugin({
-            proxy: "http://localhost/",
+            proxy: "http://localhost/" + project.name,
             files: [
                 "**/*.php",
                 "**/*.pug"
@@ -129,4 +137,4 @@ module.exports = (env, argv) => ({
 
         new FriendlyErrorsWebpackPlugin(),
     ]
-});
+}
