@@ -73,7 +73,7 @@ class Heading
         return $filter
 
     createDropdownFilter: ->
-        $filter = $("<select data-clearable='clearable' append><option></option></select>")
+        $filter = $("<select data-clearable='clearable' data-append='append'><option></option></select>")
         @table
             # Get all options
             .rows.map (row) => return row.cells[@index]

@@ -137,7 +137,7 @@ class AbstractUploadField
         for file, i in value
             file.uuid = file.ID || file.path
             @dropzone.options.addedfile.call @dropzone, file
-            if file.mime.match /image/
+            if file.mime && file.mime.match /image/
                 @dropzone.options.thumbnail.call @dropzone, file, file.url
 
             # Add the file to the list

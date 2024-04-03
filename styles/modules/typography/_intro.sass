@@ -1,11 +1,10 @@
 // =============================================================================
-// > LAYOUT : SITE INTRO
+// > MODULE - TYPOGRAPHY : INTRO INSERT
 // =============================================================================
 
-.site-intro
+.intro
+    max-width: 600px
+    background: white
     position: relative
-    &::before
-        content: ""
-        @extend %cover
-        background: color(black, .25)
-        z-index: 5
+    padding: 2em
+    +font(20px bold)

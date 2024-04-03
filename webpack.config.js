@@ -42,13 +42,6 @@ module.exports = {
     },
 
     // ==================================================
-    // > EXTERNAL(S)
-    // ==================================================
-    externals: {
-        jquery: "jQuery"
-    },
-
-    // ==================================================
     // > RULES
     // ==================================================
     module: {
@@ -117,7 +110,7 @@ module.exports = {
         // Extract CSS to their own files
         new MiniCssExtractPlugin({
             chunkFilename: "[name].css",
-            filename: "css/[name].css"
+            filename: "css/bundle.css"
         }),
 
         // Allow SASS live reload
@@ -128,7 +121,7 @@ module.exports = {
 
         // Allow brower auto-reload on php/pug file changes
         new BrowserSyncPlugin({
-            proxy: "http://localhost/" + project.name,
+            proxy: "http://localhost/" + project.name + "/build/",
             files: [
                 "**/*.php",
                 "**/*.pug"

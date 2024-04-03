@@ -28,6 +28,7 @@ class Condition
     doAction: ->
         switch @action
             when "show" then @$el.show()
+            when "slide" then @$el.slideDown()
             when "enable" then @$el.attr "disabled", false
             when "class" then @$el.addClass @params
             when "attr" then @$el.attr @params, @params
@@ -36,6 +37,7 @@ class Condition
     undoAction: ->
         switch @action
             when "show" then @$el.hide()
+            when "slide" then @$el.slideUp()
             when "enable" then @$el.attr "disabled", "disabled"
             when "class" then @$el.removeClass @params
             when "attr" then @$el.removeAttr @params

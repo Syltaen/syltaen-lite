@@ -33,19 +33,22 @@
 .is-locked
     pointer-events: none
 
-.is-scroll-locked
+.is-scroll-locked,
+.is-overflow-hidden
     overflow: hidden
+
 
 
 // ==================================================
 // > RESPONSIVE SHOW/HIDE
 // ==================================================
-+screen-suffixes() using ($suffix, $bp)
-    .show#{$suffix}
-        display: none
-
-    +screen($bp)
++breakpoints() using ($suffix, $bp)
+    @if $suffix != ""
         .show#{$suffix}
-            display: auto
-        .hide#{$suffix}
             display: none
+
+        +screen($bp)
+            .show#{$suffix}
+                display: inherit
+            .hide#{$suffix}
+                display: none
